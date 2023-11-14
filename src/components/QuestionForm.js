@@ -11,11 +11,19 @@ function QuestionForm(props) {
   });
 
   function handleChange(event) {
-    setFormData({
-      ...formData,
-      [event.target.name]: event.target.value,
-    });
+    if (event.target.name === "correctIndex") {
+      setFormData({
+        ...formData,
+        [event.target.name]: parseInt(event.target.value, 10), // Parse as integer
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [event.target.name]: event.target.value,
+      });
+    }
   }
+  
 
   function handleSubmit(event) {
     event.preventDefault();
